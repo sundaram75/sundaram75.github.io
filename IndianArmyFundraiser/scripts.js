@@ -78,3 +78,18 @@ function updateStepIndicator(n) {
     // Add "active" class to the current circle
     steps[n].className += " active";
 }
+
+// Handle calculate button click without form refresh
+document.getElementById("calculateBtn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default form refresh
+    let amountField = document.getElementById("amount");
+    let amount = parseFloat(amountField.value);
+    
+    if (!isNaN(amount)) {
+        // Perform your calculations and update the amount field (just an example)
+        let calculatedValue = amount * 1.1; // Example calculation
+        amountField.value = calculatedValue.toFixed(2);
+    } else {
+        alert("Please enter a valid amount");
+    }
+}
