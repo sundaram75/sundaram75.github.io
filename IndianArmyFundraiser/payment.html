@@ -123,10 +123,23 @@ button:hover {
 
 
 <script>
-        
+     
     
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
+
+function calculateAmount() {
+            // Calculate the amount based on the input field value
+            var inputField = document.getElementById("inputField");
+            var amount = parseFloat(inputField.value) * 10; // Example calculation
+
+            // Update the amount field in tab1
+            var amountField = document.getElementById("amountFieldtab1");
+            amountField.value = amount.toFixed(2);
+            // Update the amount field in tab2
+            amountField = document.getElementById("amountFieldtab2");
+            amountField.value = amount.toFixed(2);
+        }
 
 function showTab(n) {
   // This function will display the specified tab of the form...
@@ -197,19 +210,6 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
-
-function calculateAmount() {
-            // Calculate the amount based on the input field value
-            var inputField = document.getElementById("inputField");
-            var amount = parseFloat(inputField.value) * 10; // Example calculation
-
-            // Update the amount field in tab1
-            var amountField = document.getElementById("amountFieldtab1");
-            amountField.value = amount.toFixed(2);
-            // Update the amount field in tab2
-            amountField = document.getElementById("amountFieldtab2");
-            amountField.value = amount.toFixed(2);
-        }
 
 </script>
 
