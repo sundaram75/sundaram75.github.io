@@ -94,7 +94,7 @@
 
             <!-- Step 2: Instructions for Payment -->
             <div class="step" id="step2">
-                <div id="selectedAmountLabel"></div>
+                <div id="selectedAmountLabel">NULL</div>
 
                 <h2>Instructions for Payment</h2>
                 <div class="instructions">
@@ -141,7 +141,7 @@
                 customAmountDiv.style.display = 'none';
                 customAmountInput.required = false;
             }
-            selectedAmountLabel = amountSelect.value;
+            selectedAmountLabel.value = amountSelect.value;
         }
     
         // Function to switch between steps
