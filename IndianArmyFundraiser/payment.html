@@ -89,10 +89,10 @@ button:hover {
   <div class="tab">Calculated Amount:
     <p><input type="number" id="inputField" placeholder="Enter value" /></p>
     <p><button onclick="calculateAmount()">Calculate</button></p>
-    <p><input type="text" id="amountField" readonly /></p>
+    <p><input type="text" id="amountFieldtab1" readonly /></p>
   </div>
   <div class="tab">Payment Instuctions
-    <p><input type="text" id="amountField" readonly /></p>
+    <p><input type="text" id="amountFieldtab2" readonly /></p>
     <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
     <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
   </div>
@@ -203,11 +203,14 @@ function calculateAmount() {
             var inputField = document.getElementById("inputField");
             var amount = parseFloat(inputField.value) * 10; // Example calculation
 
-            // Update the amount field
-            var amountField = document.getElementById("amountField");
+            // Update the amount field in tab1
+            var amountField = document.getElementById("amountFieldtab1");
+            amountField.value = amount.toFixed(2);
+            // Update the amount field in tab2
+            amountField = document.getElementById("amountFieldtab2");
             amountField.value = amount.toFixed(2);
         }
-        
+
 </script>
 
 </body>
