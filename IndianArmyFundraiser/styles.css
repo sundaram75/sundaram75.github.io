@@ -56,3 +56,8 @@ button:hover {
 .finish {
     background-color: #4CAF50;
 }
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #ffdddd;
+  }

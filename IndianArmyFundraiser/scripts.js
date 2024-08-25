@@ -80,7 +80,7 @@ function updateStepIndicator(n) {
 }
 
 // Handle calculate button click without form refresh
-document.getElementById("calculateBtn").addEventListener("click", function(event) {
+/*document.getElementById("calculateBtn").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent the default form refresh
     let amountField = document.getElementById("amount");
     let amount = parseFloat(amountField.value);
@@ -93,3 +93,5 @@ document.getElementById("calculateBtn").addEventListener("click", function(event
         alert("Please enter a valid amount");
     }
 });
+*/
+
