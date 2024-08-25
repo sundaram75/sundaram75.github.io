@@ -85,6 +85,7 @@
                     <label for="customAmount">Enter a Custom Amount:</label><br>
                     <input type="number" id="customAmount" name="customAmount" placeholder="₹" min="1">
                 </div>
+                
 
                 <div class="step-buttons">
                     <button type="button" class="next-btn" onclick="nextStep(2)">Next: Payment Instructions</button>
@@ -93,6 +94,8 @@
 
             <!-- Step 2: Instructions for Payment -->
             <div class="step" id="step2">
+                <div id="selectedAmountLabel"></div>
+
                 <h2>Instructions for Payment</h2>
                 <div class="instructions">
                     <p>Please make the payment through one of the following methods:</p>
@@ -105,6 +108,7 @@
                 <div class="step-buttons">
                     <button type="button" class="next-btn" onclick="nextStep(3)">Next: Send Payment Code</button>
                 </div>
+                
             </div>
 
             <!-- Step 3: Send Payment Code via WhatsApp -->
@@ -127,6 +131,7 @@
         function handleAmountChange() {
             var amountSelect = document.getElementById('amount');
             var customAmountInput = document.getElementById('customAmount');
+            var selectedAmountLabel = document.getElementById('selectedAmountLabel');
             var customAmountDiv = document.querySelector('.custom-amount');
 
             if (amountSelect.value === 'custom-amount') {
@@ -136,6 +141,7 @@
                 customAmountDiv.style.display = 'none';
                 customAmountInput.required = false;
             }
+            selectedAmountLabel = mountSelect.value;
         }
     
         // Function to switch between steps
