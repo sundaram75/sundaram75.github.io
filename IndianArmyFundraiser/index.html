@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Copy to Clipboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+</head>
+<body>
+    <a href="#" id="copy-link" data-clipboard-text="ABC">Click here to copy</a>
+
+    <script>
+        // Initialize Clipboard.js for the anchor tag
+        var clipboard = new ClipboardJS('#copy-link');
+        
+        clipboard.on('success', function() {
+            alert('Text copied: ABC');
+        });
+
+        clipboard.on('error', function() {
+            alert('Failed to copy text.');
+        });
+    </script>
+</body>
+</html>
