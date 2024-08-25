@@ -73,15 +73,19 @@
             <div class="step active" id="step1">
                 <h2>Select Donation Amount</h2>
                 <div class="donation-options">
-                    <button type="button" onclick="setAmount(820)">Donate ₹820 (2 Boxes)</button>
-                    <button type="button" onclick="setAmount(410)">Donate ₹410 (1 Box)</button>
-                    <button type="button" onclick="setAmount(1230)">Donate ₹1230 (3 Boxes)</button>
-                    <button type="button" onclick="setAmount(2050)">Donate ₹2050 (5 Boxes)</button>
+                    <select id="amount" name="amount" onchange="handleAmountChange()">
+                        <option value="820">Donate ₹820 (2 Boxes)</option>
+                        <option value="410">Donate ₹410 (1 Box)</option>
+                        <option value="1230">Donate ₹1230 (3 Boxes)</option>
+                        <option value="2050">Donate ₹2050 (5 Boxes)</option>
+                        <option value="custom-amount">Custom Amount</option>
+                    </select>
                 </div>
-                <div class="custom-amount">
-                    <label for="amount">Or Enter a Custom Amount:</label><br>
-                    <input type="number" id="amount" name="amount" placeholder="₹" min="1" required>
+                <div class="custom-amount" style="display: none;">
+                    <label for="customAmount">Enter a Custom Amount:</label><br>
+                    <input type="number" id="customAmount" name="customAmount" placeholder="₹" min="1">
                 </div>
+
                 <div class="step-buttons">
                     <button type="button" class="next-btn" onclick="nextStep(2)">Next: Payment Instructions</button>
                 </div>
@@ -120,6 +124,20 @@
     </div>
 
     <script>
+        function handleAmountChange() {
+            var amountSelect = document.getElementById('amount');
+            var customAmountInput = document.getElementById('customAmount');
+            var customAmountDiv = document.querySelector('.custom-amount');
+
+            if (amountSelect.value === 'custom-amount') {
+                customAmountDiv.style.display = 'block';
+                customAmountInput.required = true;
+            } else {
+                customAmountDiv.style.display = 'none';
+                customAmountInput.required = false;
+            }
+        }
+    
         // Function to switch between steps
         function nextStep(step) {
             // Hide all steps
