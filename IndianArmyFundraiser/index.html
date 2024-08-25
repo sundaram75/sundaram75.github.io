@@ -1,40 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Soldier Fundraiser </title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* CSS code for responsive design */
-        @media only screen and (max-width: 600px) {
-            /* Styles for screens with a maximum width of 600px */
-            .iframe-container {
-                width: 100%;
-                height: 400px;
-            }
+    <title>Wizard Interface</title>
+    <script>
+        function calculateAmount() {
+            // Calculate the amount based on the input field value
+            var inputField = document.getElementById("inputField");
+            var amount = parseFloat(inputField.value) * 10; // Example calculation
+
+            // Update the amount field
+            var amountField = document.getElementById("amountField");
+            amountField.value = amount.toFixed(2);
         }
 
-        @media only screen and (min-width: 601px) and (max-width: 1024px) {
-            /* Styles for screens with a minimum width of 601px and maximum width of 1024px */
-            .iframe-container {
-                width: 100%;
-                height: 400px;
-            }
+        function copyToClipboard() {
+            // Copy to clipboard logic goes here
+            // ...
         }
 
-        @media only screen and (min-width: 1025px) {
-            /* Styles for screens with a minimum width of 1025px */
-            .iframe-container {
-                width: 100%;
-                height: 700px;
+        function sendWhatsAppOrEmail() {
+            // Check if WhatsApp is installed
+            if (typeof window.navigator.share !== "undefined") {
+                // Call WhatsApp API
+                // ...
+            } else {
+                // Send via email
+                // ...
             }
         }
-    </style>
+    </script>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe src="https://docs.google.com/presentation/d/1kNiM638NEZPXqk9KyZGUGtv9JF-qm9Onr_xVCTf1LKQ/embed?start=true&loop=false&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </div></div>
+    <div id="step1">
+        <h2>Step 1: Calculate Amount</h2>
+        <input type="number" id="inputField" placeholder="Enter value" />
+        <button onclick="calculateAmount()">Calculate</button>
+        <br />
+        <input type="text" id="amountField" readonly />
+    </div>
+
+    <div id="step2">
+        <h2>Step 2: Copy to Clipboard</h2>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    </div>
+
+    <div id="step3">
+        <h2>Step 3: Send via WhatsApp or Email</h2>
+        <input type="text" id="messageField" placeholder="Enter message" />
+        <button onclick="sendWhatsAppOrEmail()">Send</button>
+    </div>
 </body>
 </html>
