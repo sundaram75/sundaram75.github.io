@@ -141,7 +141,7 @@
                 customAmountDiv.style.display = 'none';
                 customAmountInput.required = false;
             }
-            selectedAmountLabel.value = amountSelect.value;
+            document.getElementById("selectedAmountLabel").innerHTML = "Selected Amount: ₹" + amountSelect.value;
         }
     
         // Function to switch between steps
