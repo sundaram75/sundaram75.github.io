@@ -92,4 +92,4 @@ document.getElementById("calculateBtn").addEventListener("click", function(event
     } else {
         alert("Please enter a valid amount");
     }
-}
+});
