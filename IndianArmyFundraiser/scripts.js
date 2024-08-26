@@ -6,21 +6,21 @@ function showStep(n) {
     let steps = document.getElementsByClassName("step");
     // Display the current step
     steps[n].style.display = "block";
-    
+
     // Update buttons: Hide Previous button for first step
     if (n == 0) {
         document.getElementById("prevBtn").style.display = "none";
     } else {
         document.getElementById("prevBtn").style.display = "inline";
     }
-    
+
     // Update buttons: Change Next button to "Submit" on the last step
     if (n == (steps.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "Submit";
     } else {
         document.getElementById("nextBtn").innerHTML = "Next";
     }
-    
+
     // Update step indicators
     updateStepIndicator(n);
 }
@@ -28,30 +28,30 @@ function showStep(n) {
 function nextPrev(n) {
     // Get all the step elements
     let steps = document.getElementsByClassName("step");
-    
+
     // Exit the function if any fields are invalid
     if (n == 1 && !validateForm()) return false;
-    
+
     // Hide the current step
     steps[currentStep].style.display = "none";
-    
+
     // Increment or decrement the step
     currentStep = currentStep + n;
 
     //Set the value of the donation amount in the second step
-   
+
     let amountSelect = document.getElementById('amount');
     let customAmountInput = document.getElementById('customAmount');
     let selectedAmount = amountSelect.value === 'custom-amount' ? customAmountInput.value : amountSelect.value;
     document.getElementById("donation").innerHTML = "Your Donation : ₹" + selectedAmount;
-    
-    
+
+
     // If the last step is reached, submit the form
     if (currentStep >= steps.length) {
         document.getElementById("multistepForm").submit();
         return false;
     }
-    
+
     // Display the next or previous step
     showStep(currentStep);
 }
@@ -60,7 +60,7 @@ function validateForm() {
     // This function validates fields in the current step
     let valid = true;
     let currentInputs = document.getElementsByClassName("step")[currentStep].getElementsByTagName("input");
-    
+
     // Check if any input is empty
     for (let i = 0; i < currentInputs.length; i++) {
         if (currentInputs[i].value == "") {
@@ -70,22 +70,21 @@ function validateForm() {
             valid = false;
         }
     }
-// For first step form is invalid only if custom-amount is selected and custom amount is empty
+    // For first step form is invalid only if custom-amount is selected and custom amount is empty
 
-console.log(currentStep);
-document.getElementById('amount').value;
-console.log(document.getElementById('customAmount').value);
+    console.log(currentStep);
+    document.getElementById('amount').value;
+    console.log(document.getElementById('customAmount').value);
 
+    if (currentStep === 0) {
+        if (document.getElementById('amount').value === 'custom-amount' && document.getElementById('customAmount').value === '') {
+            valid = false;
 
-   if (currentStep === 0 && document.getElementById('amount').value ==='custom-amount' && document.getElementById('customAmount').value === '') {
-    
-    valid = false;
-     
-   } else {
-    valid = true;
-   }
-   
-    
+        } else {
+            valid = true;
+        }
+    }
+
     // Mark the step as finished if valid
     if (valid) {
         document.getElementsByClassName("stepCircle")[currentStep].className += " finish";
@@ -99,7 +98,7 @@ function updateStepIndicator(n) {
     for (let i = 0; i < steps.length; i++) {
         steps[i].className = steps[i].className.replace(" active", "");
     }
-    
+
     // Add "active" class to the current circle
     steps[n].className += " active";
 }
@@ -107,7 +106,7 @@ function updateStepIndicator(n) {
 function handleAmountChange() {
     var amountSelect = document.getElementById('amount');
     var customAmountInput = document.getElementById('customAmount');
-//    var selectedAmountLabel = document.getElementById('selectedAmountLabel');
+    //    var selectedAmountLabel = document.getElementById('selectedAmountLabel');
     var customAmountDiv = document.querySelector('.custom-amount');
 
     if (amountSelect.value === 'custom-amount') {
@@ -118,7 +117,7 @@ function handleAmountChange() {
         customAmountInput.required = false;
     }
 
- 
+
 }
 
 // Handle calculate button click without form refresh

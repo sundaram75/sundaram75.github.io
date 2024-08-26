@@ -29,16 +29,21 @@
 
         <!-- Step 2 -->
         <div class="step">
-            <p><h2>Step 2: Contact Information</h2></p>
+            <p><h2>Step 2: Payment Instructions</h2></p>
             <p><label id="donation">Your Donation:</label></p>
-            <p>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-            </p>
-            <p>
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone">
-            </p>
+            <div class="instructions">
+                <p>For your convenience pay using your favorite UPI Payment app</p>
+                <ul>
+                    <li><strong>UPI</strong>: Pay to <strong>vsp009460@tjsb</strong></li>
+                    <!-- <li><strong>Bank Transfer</strong>: A/C No: 123456789, IFSC: ABCD0123456</li> -->
+                     <P>Don't know how ? Click on Show me</P>
+                    <button type="button">Show me</button>
+                <p></p>
+                </ul>
+                <p>Once you've made the payment, Enter the Reference ID & click "Next" to proceed.</p>
+                <label for="referenceId">Reference ID:</label>
+                <input type="text" id="referenceId" name="referenceId">
+            </div>
         </div>
 
         <!-- Step 3 -->
