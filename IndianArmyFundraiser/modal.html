@@ -2,40 +2,25 @@
 <html>
 
 <head>
-    <title>
-        Display Image in Custom Alert Box
-    </title>
+    <title>Modal Example</title>
     <style>
-        body {
-            text-align: center;
-        }
-
-        h1 {
-            color: green;
-        }
-
+        /* Modal styles */
         .modal {
+            margin: 5%;
             display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
+            align: center;
+            width: 90%;
+            height: auto;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
+            margin: auto;
             border: 1px solid #888;
-            width: auto;
+            width: 90%;
             height: auto;
-            max-width: 600px;
-            text-align: center;
-            border-radius: 5px;
         }
 
         .close {
@@ -52,59 +37,128 @@
             cursor: pointer;
         }
 
-        .modal-content img {
-            height: auto;
-            border-radius: 5px;
+        /* Slider styles */
+        .slider {
+            text-align: center;
         }
 
-        button {
-            background-color: green;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            color: #fff;
-            cursor: pointer;
+        .slider img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .slider-buttons {
+            margin-top: 10px;
+        }
+
+        .slider-buttons button {
+            margin: 0 5px;
+        }
+
+        /* Text element styles */
+        .text-element {
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <h1>
-        Displaying image in alert box by
-        <br />creating custom alert box
-    </h1>
-    <button onclick="openModal()">
-        Show Alert with Image
-    </button>
+    <button id="modalButton">Modal</button>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">
-                &times;
-            </span>
-            <img id="modalImg" src="" alt="Image">
-            <p>
-                This is a custom alert box with
-                an image in it.
-            </p>
+            <span class="close">&times;</span>
+
+            <div class="slider">
+                <img src="https://cdn.dribbble.com/users/4981036/screenshots/15273008/media/09146b94ce55ad404c143a733fc9c391.gif"
+                    alt="Image 1">
+                <img src="https://cdn.dribbble.com/users/4981036/screenshots/15281246/media/c4de9062ab5cd7788d040607c829b5f4.gif"
+                    alt="Image 2">
+                <img src="https://cdn.dribbble.com/users/4981036/screenshots/13794830/media/0f2fca8bb989680f91838695b01ebef3.gif"
+                    alt="Image 3">
+                <button class="slider-buttons" id="prevButton">Previous</button>
+                <button class="slider-buttons" id="nextButton">Next</button>
+            </div>
+
+
+
+            <div class="text-element">
+                <p id="altText"></p>
+            </div>
         </div>
     </div>
 
     <script>
-        function openModal() {
-            const modal =
-                document.getElementById('myModal');
-            const modalImg =
-                document.getElementById('modalImg');
-            modal.style.display = 'block';
-            modalImg.src =
-                'https://storage.googleapis.com/support-kms-prod/Np0zl7IMjwBTDOFCCZfw8uUS195rwKu9TXPm';
+        // Get the modal element
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var modalButton = document.getElementById("modalButton");
+
+        // Get the <span> element that closes the modal
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Get the slider element
+        var slider = document.querySelector(".slider");
+
+        // Get the previous and next buttons
+        var prevButton = document.getElementById("prevButton");
+        var nextButton = document.getElementById("nextButton");
+
+        // Get the alt text element
+        var altText = document.getElementById("altText");
+
+        // Open the modal when the button is clicked
+        modalButton.onclick = function () {
+            modal.style.display = "block";
+        };
+
+        // Close the modal when the close button is clicked
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // Close the modal when the user clicks outside of it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        // Slider functionality
+        var images = slider.getElementsByTagName("img");
+        var currentIndex = 0;
+
+        function showImage(index) {
+            for (var i = 0; i < images.length; i++) {
+                images[i].style.display = "none";
+            }
+            images[index].style.display = "block";
+            altText.textContent = images[index].alt;
         }
-        function closeModal() {
-            const modal =
-                document.getElementById('myModal');
-            modal.style.display = 'none';
+
+        function showNextImage() {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            showImage(currentIndex);
         }
+
+        function showPreviousImage() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+            showImage(currentIndex);
+        }
+
+        prevButton.onclick = showPreviousImage;
+        nextButton.onclick = showNextImage;
+
+        // Show the first image initially
+        showImage(currentIndex);
     </script>
 </body>
 
