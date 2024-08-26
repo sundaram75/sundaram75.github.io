@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="multistepForm">
+        <!-- Step 1 -->
+        <div class="step">
+            <p><h2>Step 1: Select Donation</h2></p>
+            <p><label for="SelectDonation">Select number of sweet boxes OR Enter an amount</label></p>
+            <div class="donation-options">
+                <select id="amount" name="amount" onchange="handleAmountChange()">
+                    <option value="820">Donate 2 Boxes</option>
+                    <option value="410">Donate 1 Box</option>
+                    <option value="1230">Donate 3 Boxes</option>
+                    <option value="2050">Donate 5 Boxes</option>
+                    <option value="custom-amount">Custom Amount</option>
+                </select>
+            </div>
+            <div class="custom-amount" style="display: none;">
+                <label for="customAmount">Enter a Custom Amount:</label><br>
+                <input type="number" id="customAmount" name="customAmount" placeholder="₹" min="1">
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <p><h2>Step 2: Contact Information</h2></p>
+            <p><label id="donation">Your Donation:</label></p>
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </p>
+            <p>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone">
+            </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <h2>Step 3: Account Setup</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+
+        <!-- Circles to indicate the steps -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="stepCircle"></span>
+            <span class="stepCircle"></span>
+            <span class="stepCircle"></span>
+        </div>
+    </form>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

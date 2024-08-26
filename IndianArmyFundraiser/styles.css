@@ -61,3 +61,22 @@ button:hover {
 input.invalid {
     background-color: #ffdddd;
   }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #666;
+}
+
+h1 {
+    color: #333;
+}
