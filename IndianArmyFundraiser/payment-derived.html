@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <form id="multistepForm">
         <!-- Step 1 -->
         <div class="step">
-            <p><h2>Step 1: Select Donation</h2></p>
-            <p><label for="SelectDonation">Select number of sweet boxes OR Enter an amount</label></p>
+            <p>
+            <h2>Step 1: Select Donation</h2>
+            </p>
+            <p>Select number of sweet boxes OR Enter an amount</p>
             <div class="donation-options">
                 <select id="amount" name="amount" onchange="handleAmountChange()">
                     <option value="820">Donate 2 Boxes</option>
@@ -29,16 +33,18 @@
 
         <!-- Step 2 -->
         <div class="step">
-            <p><h2>Step 2: Payment Instructions</h2></p>
-            <p><label id="donation">Your Donation:</label></p>
+            <p>
+            <h2>Step 2: Payment Instructions</h2>
+            </p>
+            <p><span id="donation">Your Donation:</span></p>
             <div class="instructions">
                 <p>For your convenience pay using your favorite UPI Payment app</p>
                 <ul>
                     <li><strong>UPI</strong>: Pay to <strong>vsp009460@tjsb</strong></li>
                     <!-- <li><strong>Bank Transfer</strong>: A/C No: 123456789, IFSC: ABCD0123456</li> -->
-                     <P>Don't know how ? Click on Show me</P>
+                    <P>Don't know how ? Click on Show me</P>
                     <button type="button">Show me</button>
-                <p></p>
+                    <p></p>
                 </ul>
                 <p>Once you've made the payment, Enter the Reference ID & click "Next" to proceed.</p>
                 <label for="referenceId">Reference ID:</label>
@@ -48,11 +54,16 @@
 
         <!-- Step 3 -->
         <div class="step">
-            <h2>Step 3: Account Setup</h2>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
+            <h2>Step 3: Inform us by WhatsApp</h2>
+            <p>Thank you for your support.</p>
+            <p>A Surpise Gift awaits you THIS DIWALI from a secret corporate sponsor</p>
+            <p>Please use the button below to inform us of your donation via WhatsApp</p>
+
+
+            <button type="button" id="sendWhatsAppBtn" onclick="sendWhatsAppMessage()">Send WhatsApp Message</button>
+
+            <!-- <button type="button" id="sendWhatsAppBtn">Send WhatsApp Message</button>
+            document.getElementById("sendWhatsAppBtn").addEventListener("click", sendWhatsAppMessage); -->
         </div>
 
         <!-- Navigation Buttons -->
@@ -73,4 +84,5 @@
 
     <script src="scripts.js"></script>
 </body>
+
 </html>

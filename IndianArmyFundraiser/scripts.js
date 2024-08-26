@@ -120,6 +120,29 @@ function handleAmountChange() {
 
 }
 
+function sendWhatsAppMessage() {
+    var donation = document.getElementById("donation").innerHTML;
+    var start = donation.indexOf("₹");
+    var end = donation.length
+    console.log("Cuts: Start" + start + " End" + end);
+    console.log("Donation amount = " + donation.substring(start, end));
+
+    //console.log("Whatapp amount" + donation.substring(donation.indexOf("₹"), donation.length()));
+
+    // donation = donation.trimStart("Your Donation : ₹".length - 1);
+    var upiId = document.getElementById("referenceId").value;
+
+    var message = "I'm proud to donate to the Army Fundraiser. I have donated " + donation.substring(start, end) + ". The UPI ID reference Number for the payment is " + upiId;
+
+    // Use the free WhatsApp API to send the message
+    // Replace the following line with the actual code to send the WhatsApp message
+
+    var link = "https://wa.me/918762334321?text=" + message;
+    window.open(link, '_blank');
+
+    console.log("Sending WhatsApp message: " + message);
+}
+
 // Handle calculate button click without form refresh
 /*document.getElementById("calculateBtn").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent the default form refresh
